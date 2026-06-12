@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: Arial, Helvetica, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.landing-shell {
+  position: relative;
+}
+
+.landing-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.075) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 78%);
+  opacity: 0.5;
+}
+
+.landing-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(28px);
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.landing-glow-a {
+  top: -12rem;
+  right: -8rem;
+  width: 34rem;
+  height: 34rem;
+  background:
+    radial-gradient(circle, rgba(34, 211, 238, 0.58), transparent 68%);
+  animation: float-slow 13s ease-in-out infinite;
+}
+
+.landing-glow-b {
+  bottom: 5rem;
+  left: -12rem;
+  width: 30rem;
+  height: 30rem;
+  background:
+    radial-gradient(circle, rgba(16, 185, 129, 0.32), transparent 68%);
+  animation: float-slow 16s ease-in-out infinite reverse;
+}
+
+.landing-enter {
+  animation: rise-in 720ms ease-out both;
+}
+
+.landing-preview {
+  animation-delay: 140ms;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(22px, -18px, 0) scale(1.05);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-enter,
+  .landing-glow {
+    animation: none;
+  }
+}
+
+.document-editor {
+  color: #18181b;
+  font-size: 1rem;
+  line-height: 1.78;
+  text-align: start;
+}
+
+.document-editor > * + * {
+  margin-top: 0.95rem;
+}
+
+.document-editor :where(p, h1, h2, h3, blockquote, li) {
+  text-align: start;
+  unicode-bidi: plaintext;
+}
+
+.document-editor h1,
+.document-editor h2,
+.document-editor h3 {
+  color: #09090b;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.document-editor h1 {
+  font-size: 2.25rem;
+  letter-spacing: -0.025em;
+}
+
+.document-editor h2 {
+  font-size: 1.6rem;
+  letter-spacing: -0.015em;
+}
+
+.document-editor h3 {
+  font-size: 1.25rem;
+}
+
+.document-editor strong {
+  color: #09090b;
+  font-weight: 650;
+}
+
+.document-editor ul,
+.document-editor ol {
+  padding-inline-start: 1.5rem;
+}
+
+.document-editor ul {
+  list-style: disc;
+}
+
+.document-editor ol {
+  list-style: decimal;
+}
+
+.document-editor blockquote {
+  border-inline-start: 3px solid #d4d4d8;
+  color: #52525b;
+  padding-inline-start: 1rem;
+}
+
+.document-editor ::selection {
+  background: #dbeafe;
+}
+
+.document-editor p.is-editor-empty:first-child::before {
+  color: #a1a1aa;
+  content: "Start writing your document...";
+  float: inline-start;
+  height: 0;
+  pointer-events: none;
+}
+
+.document-editor p.is-editor-empty:first-child:dir(rtl)::before {
+  content: "ابدأ بكتابة المستند...";
+}
+
+@media print {
+  @page {
+    margin: 18mm;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .document-workspace {
+    border: 0;
+    border-radius: 0;
+    max-width: none;
+    box-shadow: none;
+  }
+
+  .print-area {
+    background: #ffffff;
+    padding: 0;
+  }
+
+  .document-page {
+    max-width: none;
+    min-height: auto;
+    padding: 0;
+    box-shadow: none;
+  }
+}
