@@ -30,11 +30,9 @@ function ToolbarButton({
         "hover:bg-slate-100 hover:text-slate-900",
         "disabled:cursor-not-allowed disabled:text-slate-300 disabled:hover:bg-transparent",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1",
-        isActive && [
-          "bg-indigo-600 text-white shadow-sm",
-          "hover:bg-indigo-700 hover:text-white",
-          "ring-1 ring-indigo-500/30",
-        ],
+        isActive && "bg-indigo-600 text-white shadow-sm",
+        isActive && "hover:bg-indigo-700 hover:text-white",
+        isActive && "ring-1 ring-indigo-500/30",
       )}
       disabled={disabled}
       onClick={onClick}

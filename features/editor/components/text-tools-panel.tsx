@@ -42,6 +42,8 @@ function getMatchRanges(editor: Editor, query: string): MatchRange[] {
     }
   });
 
+  
+
   return ranges;
 }
 
